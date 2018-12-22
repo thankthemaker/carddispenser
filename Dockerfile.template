@@ -8,7 +8,7 @@ RUN mkdir -p /usr/src/app/
 WORKDIR /usr/src/app
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
-RUN apk add --no-cache make gcc g++ python && \
+RUN apk add --no-cache make gcc g++ python py-rpigpio && \
   JOBS=MAX npm install -g node-red node-red-contrib-resinio --production --silent && \
   apk del make gcc g++ python && \
   npm cache clean --force && rm -rf /tmp/*
