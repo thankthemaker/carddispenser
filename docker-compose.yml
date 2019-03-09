@@ -1,0 +1,10 @@
+version: '2'
+services:
+  python:
+    build: ./python
+  nodered:
+    build: ./nodered
+    depends_on:
+      - python
+    ports:
+      - "80:80"
