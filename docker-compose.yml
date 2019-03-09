@@ -4,6 +4,8 @@ services:
     build: ./python
   nodered:
     build: ./nodered
+    privileged: true
+    restart: always
     depends_on:
       - python
     ports:
