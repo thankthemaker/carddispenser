@@ -2,6 +2,8 @@ version: '2'
 services:
   python:
     build: ./python
+    privileged: true
+    restart: always
   nodered:
     build: ./nodered
     privileged: true
