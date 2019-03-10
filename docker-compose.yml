@@ -1,14 +1,14 @@
 version: '2'
 services:
-  python:
-    build: ./python
-    privileged: true
-    restart: always
+#  python:
+#    build: ./python
+#    privileged: true
+#    restart: always
   nodered:
     build: ./nodered
     privileged: true
     restart: always
-    depends_on:
-      - python
+#    depends_on:
+#      - python
     ports:
       - "80:80"
