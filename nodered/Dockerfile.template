@@ -22,7 +22,6 @@ COPY ./app ./
 COPY ./certs /root/.agent/
 COPY ./app/PN532 /usr/local/lib/node_modules/node-red-contrib-pn532/PN532 
 COPY ./app/readmifare.py /usr/local/lib/node_modules/node-red-contrib-pn532/PN532
-chmod 755  /usr/local/lib/node_modules/node-red-contrib-pn532/PN532/PN532
 
 # Enable systemd init system in container
 ENV INITSYSTEM=on
