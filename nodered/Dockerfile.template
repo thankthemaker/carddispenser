@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
 RUN apk add --no-cache make git gcc g++ linux-headers musl-dev python python-dev py-pip py-rpigpio && \
-  JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf node-red-contrib-httpauth node-red-contrib-mongodb3 iont-node-red-contrib-aws-iot-hub node-red-contrib-pn532 --production --silent && \
+  JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf node-red-contrib-httpauth node-red-contrib-mongodb3 node-red-contrib-aws-iot-hub node-red-contrib-pn532 --production --silent && \
   pip install spidev && \
   git clone https://github.com/adafruit/Adafruit_Python_PN532.git && \
   cd Adafruit_Python_PN532 && \
@@ -19,7 +19,7 @@ RUN apk add --no-cache make git gcc g++ linux-headers musl-dev python python-dev
 
 # This will copy all files in our root to the working  directory in the container
 COPY ./app ./
-COPY ./certs /root/.agent/
+COPY ./certs /root/.agent/certs/
 COPY ./app/PN532 /usr/local/lib/node_modules/node-red-contrib-pn532/PN532 
 COPY ./app/readmifare.py /usr/local/lib/node_modules/node-red-contrib-pn532/PN532
 
