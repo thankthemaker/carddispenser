@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    make git gcc g++ linux-headers python python-dev python-pip python-rpigpio && \
+    make git gcc g++  python python-dev python-pip python-rpigpio && \
     apt-get clean && rm -rf /var/lib/apt/lists/*  && \
    JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf node-red-contrib-httpauth node-red-contrib-mongodb3 node-red-contrib-aws node-red-contrib-pn532 node-red-node-pi-neopixel --production --silent && \
    pip install spidev unicornhat && \
