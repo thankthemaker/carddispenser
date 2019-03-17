@@ -8,11 +8,13 @@ WORKDIR /usr/src/app
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    make git gcc g++  python python-dev python-pip python-rpi.gpio nodejs && \
+    make git gcc g++  python python-dev python-pip python-rpi.gpio curl software-properties-common && \
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo bash - && \
+    apt-get install -yq nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*  && \
-   JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf node-red-contrib-httpauth node-red-contrib-mongodb3 node-red-contrib-aws node-red-contrib-pn532 node-red-node-pi-neopixel --production --silent && \
-   pip install spidev unicornhat && \
-   npm cache clean --force && rm -rf /tmp/*
+    JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf node-red-contrib-httpauth node-red-contrib-mongodb3 node-red-contrib-aws node-red-contrib-pn532 node-red-node-pi-neopixel --production --silent && \
+    pip install spidev unicornhat && \
+    npm cache clean --force && rm -rf /tmp/*
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
 #RUN apk add --no-cache make git gcc g++ linux-headers musl-dev python python-dev py-pip py-rpigpio && \
