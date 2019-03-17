@@ -5,7 +5,7 @@ services:
  #   privileged: true
  #   restart: always
   nodered:
-    build: ./nodered-python
+    build: ./nodered
     privileged: true
     restart: always
 #    depends_on:
